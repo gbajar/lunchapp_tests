@@ -22,13 +22,18 @@ export class HomePage {
       .nth(1)
       .click();
     if (
-      (await this.page.locator(".v-chip__content").textContent()) === "Normali"
+      (await this.page.locator(".v-chip__content").textContent()) ===
+      "Papildoma"
     ) {
-      await this.page.getByRole("main").getByText("Papildoma").click();
-    } else {
       await this.page.getByRole("main").getByText("Normali").click();
+    } else {
+      await this.page.getByRole("main").getByText("Papildoma").click();
     }
 
-    await this.page.getByRole("button", { name: "€" });
+    await this.page
+      .locator(
+        "button.orders-list-button.v-btn.v-btn--round.theme--dark.secondary"
+      )
+      .click();
   }
 }
